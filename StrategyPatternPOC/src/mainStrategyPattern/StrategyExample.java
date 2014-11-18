@@ -1,33 +1,4 @@
 package mainStrategyPattern;
-
-
-/** The classes that implement a concrete strategy should implement this.
-* The Context class uses this to call the concrete strategy. */
-interface Strategy {
-    int execute(int a, int b); 
-}
- 
-/** Implements the algorithm using the strategy interface */
-class Add implements Strategy {
-    public int execute(int a, int b) {
-        System.out.println("Called Add's execute()");
-        return a + b;  // Do an addition with a and b
-    }
-}
- 
-class Subtract implements Strategy {
-    public int execute(int a, int b) {
-        System.out.println("Called Subtract's execute()");
-        return a - b;  // Do a subtraction with a and b
-    }
-}
- 
-class Multiply implements Strategy {
-    public int execute(int a, int b) {
-        System.out.println("Called Multiply's execute()");
-        return a * b;   // Do a multiplication with a and b
-    }    
-}
  
 // Configured with a ConcreteStrategy object and maintains
 // a reference to a Strategy object 
@@ -44,15 +15,9 @@ class Context {
  
 /** Tests the pattern */
 class StrategyExample {
-    public static void main(String[] args) {
+    public static void runStrategy() {
         Context context;
-        // Three contexts following different strategies
-        // It instantiates each strategy at runtime.
-        // In my head I wanted to create a static class Context,
-        // that would have been called calculator, because it instantiates
-        // the three instances at once. I think it very depends on the usage
-        // of the pattern but the concept remains the same
-        // 
+
         context = new Context(new Add());
         int resultA = context.executeStrategy(3,4);
  
@@ -62,8 +27,9 @@ class StrategyExample {
         context = new Context(new Multiply());
         int resultC = context.executeStrategy(3,4);
  
-        System.out.println("Result A : " + resultA );
+        /*System.out.println("Result A : " + resultA );
         System.out.println("Result B : " + resultB );
-        System.out.println("Result C : " + resultC );
+        System.out.println("Result C : " + resultC );*/
     }
 }
+
